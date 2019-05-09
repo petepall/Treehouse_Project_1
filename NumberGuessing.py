@@ -11,7 +11,7 @@ def print_header():
     print("-" * 40)
 
 
-def UserInput():
+def User_input():
     while True:
         try:
             guess = int(
@@ -28,7 +28,7 @@ def UserInput():
     return guess
 
 
-def GenerateGuessNumber(lower_number, higher_number):
+def Generate_guess_number(lower_number, higher_number):
     return random.randint(lower_number, higher_number)
 
 
@@ -37,16 +37,16 @@ def start_game():
 
     while True:
         print_header()
-        numberToGuess = GenerateGuessNumber(LOWER_NUMBER, HIGHEST_NUMBER)
+        number_to_guess = Generate_guess_number(LOWER_NUMBER, HIGHEST_NUMBER)
         guess = 0
         count = 0
 
-        while guess != numberToGuess:
-            guess = UserInput()
+        while guess != number_to_guess:
+            guess = User_input()
             count += 1
-            if guess < numberToGuess:
+            if guess < number_to_guess:
                 print("It's higher")
-            elif guess > numberToGuess:
+            elif guess > number_to_guess:
                 print("It's lower")
         else:
             print(f'\nYou geussed the right number and needed {count} tries')
