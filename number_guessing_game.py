@@ -48,7 +48,7 @@ def Generate_guess_number(lower_number, higher_number):
 
 
 def play_again():
-    """Perform and validate for a next game
+    """Perform and validate entry for a next game
 
     Returns:
         string -- returns the decision of the user to start a new game or stop
