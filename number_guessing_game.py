@@ -47,6 +47,24 @@ def Generate_guess_number(lower_number, higher_number):
     return random.randint(lower_number, higher_number)
 
 
+def play_again():
+    """Perform and validate for a next game
+
+    Returns:
+        string -- returns the decision of the user to start a new game or stop
+    """
+    while True:
+        new_game = input(
+            "Would you like to play again? [y]es/[n]o: ")
+        if new_game.lower() not in ["n", "y"]:
+            print('Wrong entry please use y or n')
+            continue
+        else:
+            break
+
+    return new_game
+
+
 def start_game():
     """Main loop of the game
     """
@@ -71,18 +89,11 @@ def start_game():
                 highscore = count
 
             # validate the input for a new game
-            while True:
-                play_again = input(
-                    "Would you like to play again? [y]es/[n]o: ")
-                if play_again.lower() not in ["n", "y"]:
-                    print('Wrong entry please use y or n')
-                    continue
-                else:
-                    break
-            if play_again.lower() == 'y':
+            another_game = play_again()
+            if another_game.lower() == 'y':
                 print(f"\n\nThe HIGHSCORE is {highscore}")
                 continue
-            elif play_again.lower() == 'n':
+            elif another_game.lower() == 'n':
                 print("\n Thanks for playing, see you next time!")
                 break
 
