@@ -11,7 +11,7 @@ def print_header():
     print("-" * 40)
 
 
-def User_input():
+def user_input():
     """This function manages the user input and validation for the guesses
 
     Returns:
@@ -33,7 +33,7 @@ def User_input():
     return guess
 
 
-def Generate_guess_number(lower_number, higher_number):
+def generate_number_to_guess(lower_number, higher_number):
     """Generated a random integer number and returns this
 
     Arguments:
@@ -73,12 +73,13 @@ def start_game():
 
     while True:
         print_header()
-        number_to_guess = Generate_guess_number(LOWER_NUMBER, HIGHEST_NUMBER)
+        number_to_guess = generate_number_to_guess(LOWER_NUMBER,
+                                                   HIGHEST_NUMBER)
         guess = 0
         count = 0
 
         while guess != number_to_guess:
-            guess = User_input()
+            guess = user_input()
             count += 1
             if guess < number_to_guess:
                 print("It's higher")
