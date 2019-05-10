@@ -52,6 +52,7 @@ def play_again():
 
     Returns:
         string -- returns the decision of the user to start a new game or stop
+        in lowercase.
     """
     while True:
         new_game = input(
@@ -62,7 +63,7 @@ def play_again():
         else:
             break
 
-    return new_game
+    return new_game.lower()
 
 
 def start_game():
@@ -90,10 +91,10 @@ def start_game():
 
             # validate the input for a new game
             another_game = play_again()
-            if another_game.lower() == 'y':
+            if another_game == 'y':
                 print(f"\n\nThe HIGHSCORE is {highscore}")
                 continue
-            elif another_game.lower() == 'n':
+            elif another_game == 'n':
                 print("\n Thanks for playing, see you next time!")
                 break
 
