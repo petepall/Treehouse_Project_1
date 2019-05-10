@@ -1,0 +1,9 @@
+{
+    "python.pythonPath": "C:\\Users\\PeterPallen\\.virtualenvs\\Treehouse_Project_1-nQVEU7fM\\Scripts\\python.exe",
+    "python.testing.pyTestArgs": [
+        "."
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pyTestEnabled": true
+}
