@@ -12,6 +12,11 @@ def print_header():
 
 
 def User_input():
+    """This function manages the user input and validation for the guesses
+
+    Returns:
+        int -- return the validated guess entry
+    """
     while True:
         try:
             guess = int(
@@ -29,10 +34,22 @@ def User_input():
 
 
 def Generate_guess_number(lower_number, higher_number):
+    """Generated a random integer number and returns this
+
+    Arguments:
+        lower_number {int} -- This is the lower number for the random generator
+        higher_number {int} -- Thi is the highest number for the random
+        generator
+
+    Returns:
+        int -- Generated random number within the specified range
+    """
     return random.randint(lower_number, higher_number)
 
 
 def start_game():
+    """Main loop of the game
+    """
     highscore = 0
 
     while True:
@@ -53,17 +70,21 @@ def start_game():
             if count < highscore or highscore == 0:
                 highscore = count
 
-            play_again = input("Would you like to play again? [y]es/[n]o: ")
+            # validate the input for a new game
+            while True:
+                play_again = input(
+                    "Would you like to play again? [y]es/[n]o: ")
+                if play_again.lower() not in ["n", "y"]:
+                    print('Wrong entry please use y or n')
+                    continue
+                else:
+                    break
             if play_again.lower() == 'y':
                 print(f"\n\nThe HIGHSCORE is {highscore}")
                 continue
             elif play_again.lower() == 'n':
                 print("\n Thanks for playing, see you next time!")
                 break
-            else:
-                print('Wrong entry please use y or n')
-                play_again = input(
-                    "Would you like to play again? [y]es/[n]o: ")
 
 
 if __name__ == "__main__":
