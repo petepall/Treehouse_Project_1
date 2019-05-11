@@ -12,10 +12,12 @@ def print_header():
 
 
 def user_input():
-    """This function manages the user input and validation for the guesses
+    """Collect and validate the entries made by the users
 
-    Returns:
-        int -- return the validated guess entry
+    Returns
+    -------
+    int
+        Gives back the validated number entered by the user.
     """
     while True:
         try:
@@ -34,15 +36,20 @@ def user_input():
 
 
 def generate_number_to_guess(lower_number, higher_number):
-    """Generated a random integer number and returns this
+    """Generates a random number between the given lowest and highest number
 
-    Arguments:
-        lower_number {int} -- This is the lower number for the random generator
-        higher_number {int} -- Thi is the highest number for the random
-        generator
+    Parameters
+    ----------
+    lower_number : int
+        Lowest number for the generator
 
-    Returns:
-        int -- Generated random number within the specified range
+    higher_number : int
+        highest number for the generator
+
+    Returns
+    -------
+    int
+        returns the generated random number that is in the given range.
     """
     return random.randint(lower_number, higher_number)
 
@@ -50,9 +57,10 @@ def generate_number_to_guess(lower_number, higher_number):
 def play_again():
     """Perform and validate entry for a next game
 
-    Returns:
-        string -- returns the decision of the user to start a new game or stop
-        in lowercase.
+    Returns
+    -------
+    string
+        returns the validated user entry for a next game.
     """
     while True:
         new_game = input(
@@ -67,7 +75,7 @@ def play_again():
 
 
 def start_game():
-    """Main loop of the game
+    """This is the main loop that runs the app.
     """
     highscore = 0
 
@@ -86,7 +94,8 @@ def start_game():
             elif guess > number_to_guess:
                 print("It's lower")
         else:
-            print(f'\nYou geussed the right number and needed {count} tries')
+            print(
+                f'\nYou geussed the right number and needed {count} tries')
             if count < highscore or highscore == 0:
                 highscore = count
 
