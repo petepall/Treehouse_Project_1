@@ -16,6 +16,12 @@ def print_exit_message():
     print("\n Thanks for playing, see you next time!")
 
 
+def check_exit(leave_game):
+    if leave_game.lower() == 'y':
+        print_exit_message()
+        sys.exit(1)
+
+
 def user_input():
     """Collect and validate the entries made by the users
 
@@ -77,10 +83,7 @@ def play_again():
                 "Would you like to play again? [y]es/[n]o: ")
         except KeyboardInterrupt:
             leave_game = input("Do you really want to quit? (y/n) ")
-            if leave_game.lower() == 'y':
-                print_exit_message()
-                sys.exit(1)
-            else:
+            if not check_exit(leave_game):
                 continue
 
         if new_game.lower() not in ["n", "y"]:
@@ -110,10 +113,7 @@ def start_game():
                 guess = user_input()
             except KeyboardInterrupt:
                 leave_game = input("Do you really want to quit? (y/n) ")
-                if leave_game.lower() == 'y':
-                    print_exit_message()
-                    sys.exit(1)
-                else:
+                if not check_exit(leave_game):
                     continue
 
             count += 1
