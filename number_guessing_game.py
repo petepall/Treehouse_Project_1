@@ -68,6 +68,8 @@ def play_again():
         returns the validated user entry for a next game.
     """
     while True:
+        # capture the ctrl-c interupt.
+        # https://stackoverflow.com/questions/1112343/how-do-i-capture-sigint-in-python
         try:
             new_game = input(
                 "Would you like to play again? [y]es/[n]o: ")
