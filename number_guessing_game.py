@@ -17,6 +17,13 @@ def print_exit_message():
 
 
 def check_exit(leave_game):
+    """Check if the user really intended to end the game with crtl-c
+
+    Parameters
+    ----------
+    leave_game : string
+        Response from the user to question if he wants to quit the game.
+    """
     if leave_game.lower() == 'y':
         print_exit_message()
         sys.exit(1)
