@@ -69,7 +69,7 @@ def play_again():
     """
     while True:
         # capture the ctrl-c interupt.
-        # https://stackoverflow.com/questions/1112343/how-do-i-capture-sigint-in-python
+        # https://stackoverflow.com/questions/15318208/capture-control-c-in-python
         try:
             new_game = input(
                 "Would you like to play again? [y]es/[n]o: ")
@@ -102,7 +102,7 @@ def start_game():
 
         while guess != number_to_guess:
             # capture the ctrl-c interupt.
-            # https://stackoverflow.com/questions/1112343/how-do-i-capture-sigint-in-python
+            # https://stackoverflow.com/questions/15318208/capture-control-c-in-python
             try:
                 guess = user_input()
                 count += 1
