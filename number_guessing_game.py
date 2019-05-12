@@ -29,14 +29,16 @@ def user_input():
             guess = int(
                 input(f'Enter your Guess of a number between '
                       f'{LOWER_NUMBER} - {HIGHEST_NUMBER}: '))
-            if guess < LOWER_NUMBER or guess > HIGHEST_NUMBER:
-                print("The entered number is out of range, try again.")
-                continue
         except ValueError:
             print('you did not enter a number, please try again.')
             continue
         else:
             break
+
+        if guess < LOWER_NUMBER or guess > HIGHEST_NUMBER:
+            print("The entered number is out of range, try again.")
+            continue
+
     return guess
 
 
@@ -73,11 +75,6 @@ def play_again():
         try:
             new_game = input(
                 "Would you like to play again? [y]es/[n]o: ")
-            if new_game.lower() not in ["n", "y"]:
-                print('Wrong entry please use y or n')
-                continue
-            else:
-                break
         except KeyboardInterrupt:
             leave_game = input("Do you really want to quit? (y/n) ")
             if leave_game.lower() == 'y':
@@ -85,6 +82,12 @@ def play_again():
                 sys.exit(1)
             else:
                 continue
+
+        if new_game.lower() not in ["n", "y"]:
+            print('Wrong entry please use y or n')
+            continue
+        else:
+            break
 
     return new_game.lower()
 
@@ -105,11 +108,6 @@ def start_game():
             # https://stackoverflow.com/questions/15318208/capture-control-c-in-python
             try:
                 guess = user_input()
-                count += 1
-                if guess < number_to_guess:
-                    print("It's higher")
-                elif guess > number_to_guess:
-                    print("It's lower")
             except KeyboardInterrupt:
                 leave_game = input("Do you really want to quit? (y/n) ")
                 if leave_game.lower() == 'y':
@@ -117,6 +115,13 @@ def start_game():
                     sys.exit(1)
                 else:
                     continue
+
+            count += 1
+            if guess < number_to_guess:
+                print("It's higher")
+            elif guess > number_to_guess:
+                print("It's lower")
+
         else:
             print(
                 f'\nYou geussed the right number and needed {count} tries')
