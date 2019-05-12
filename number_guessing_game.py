@@ -1,4 +1,5 @@
 import random
+import sys
 
 
 LOWER_NUMBER = 1
@@ -9,6 +10,10 @@ def print_header():
     print("-" * 40)
     print("Welcome to the number guessing game")
     print("-" * 40)
+
+
+def print_exit_message():
+    print("\n Thanks for playing, see you next time!")
 
 
 def user_input():
@@ -63,13 +68,21 @@ def play_again():
         returns the validated user entry for a next game.
     """
     while True:
-        new_game = input(
-            "Would you like to play again? [y]es/[n]o: ")
-        if new_game.lower() not in ["n", "y"]:
-            print('Wrong entry please use y or n')
-            continue
-        else:
-            break
+        try:
+            new_game = input(
+                "Would you like to play again? [y]es/[n]o: ")
+            if new_game.lower() not in ["n", "y"]:
+                print('Wrong entry please use y or n')
+                continue
+            else:
+                break
+        except KeyboardInterrupt:
+            leave_game = input("Do you really want to quit? (y/n) ")
+            if leave_game.lower() == 'y':
+                print_exit_message()
+                sys.exit(1)
+            else:
+                continue
 
     return new_game.lower()
 
@@ -78,7 +91,6 @@ def start_game():
     """This is the main loop that runs the app.
     """
     highscore = 0
-
     while True:
         print_header()
         number_to_guess = generate_number_to_guess(LOWER_NUMBER,
@@ -87,12 +99,22 @@ def start_game():
         count = 0
 
         while guess != number_to_guess:
-            guess = user_input()
-            count += 1
-            if guess < number_to_guess:
-                print("It's higher")
-            elif guess > number_to_guess:
-                print("It's lower")
+            # capture the ctrl-c interupt.
+            # https://stackoverflow.com/questions/1112343/how-do-i-capture-sigint-in-python
+            try:
+                guess = user_input()
+                count += 1
+                if guess < number_to_guess:
+                    print("It's higher")
+                elif guess > number_to_guess:
+                    print("It's lower")
+            except KeyboardInterrupt:
+                leave_game = input("Do you really want to quit? (y/n) ")
+                if leave_game.lower() == 'y':
+                    print_exit_message()
+                    sys.exit(1)
+                else:
+                    continue
         else:
             print(
                 f'\nYou geussed the right number and needed {count} tries')
@@ -105,7 +127,7 @@ def start_game():
                 print(f"\n\nThe HIGHSCORE is {highscore}")
                 continue
             elif another_game == 'n':
-                print("\n Thanks for playing, see you next time!")
+                print_exit_message()
                 break
 
 
