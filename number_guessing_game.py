@@ -42,15 +42,14 @@ def user_input():
             guess = int(
                 input(f'Enter your Guess of a number between '
                       f'{LOWER_NUMBER} - {HIGHEST_NUMBER}: '))
+            if guess < LOWER_NUMBER or guess > HIGHEST_NUMBER:
+                print("The entered number is out of range, try again.")
+                continue
         except ValueError:
             print('you did not enter a number, please try again.')
             continue
         else:
             break
-
-        if guess < LOWER_NUMBER or guess > HIGHEST_NUMBER:
-            print("The entered number is out of range, try again.")
-            continue
 
     return guess
 
